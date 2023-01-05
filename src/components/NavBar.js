@@ -10,7 +10,7 @@ import SearchInput from '../utils/SearchInput';
 const NavBar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar sx={{ display: 'flex' }}>
           <IconButton
             size="large"
@@ -21,12 +21,7 @@ const NavBar = () => {
           >
             <LiveTvIcon />
           </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { sm: 'none', lg: 'block' } }}
-          >
+          <Typography variant="h6" noWrap component="div">
             Movie App
           </Typography>
           <SearchInput />
