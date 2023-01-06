@@ -1,12 +1,35 @@
+import PaginationItem from '@mui/material/PaginationItem';
 import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { movieAction } from '../redux/redux';
 const Pages = () => {
+  const { movie } = useSelector((state) => state.movie);
+  const dispatch = useDispatch();
+  const previous = () => {
+    if (movie.page > 1)
+      dispatch(movieAction(movie.screenContent, movie.page - 1));
+  };
+  const next = () => {
+    if (movie.total_pages > movie.page)
+      dispatch(movieAction(movie.screenContent, movie.page + 1));
+  };
+  const page = (e) => {
+    dispatch(movieAction(movie.screenContent, +e.target.innerText));
+  };
+
   return (
     <div className="page-numbers">
-      <Stack spacing={2}>
-        <Pagination count={10} color="primary" />
-      </Stack>
+      <PaginationItem type="previous" onClick={previous} />
+      <Pagination
+        count={99}
+        page={movie.page}
+        color="primary"
+        hideNextButton={true}
+        hidePrevButton={true}
+        onClick={page}
+      />
+      <PaginationItem type="next" onClick={next} />
     </div>
   );
 };

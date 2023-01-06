@@ -13,10 +13,7 @@ import { movieAction } from '../redux/redux';
 const BottomNav = () => {
   const [value, setValue] = React.useState(0);
   const dispatch = useDispatch();
-  const key = '20c575bf9f44538421f08161da824a42';
-  let popular = `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`;
-  let trending = `https://api.themoviedb.org/3/trending/all/day?api_key=${key}&language=en-US&page=1`;
-  let tv = `https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1`;
+
   return (
     <Box className="bottom-nav">
       <BottomNavigation
@@ -28,22 +25,22 @@ const BottomNav = () => {
         }}
       >
         <BottomNavigationAction
-          onClick={() => dispatch(movieAction(trending))}
+          onClick={() => dispatch(movieAction('trending'))}
           label="Trending"
           icon={<WhatshotIcon />}
         />
         <BottomNavigationAction
-          onClick={() => dispatch(movieAction(popular))}
+          onClick={() => dispatch(movieAction('popular'))}
           label="Movies"
           icon={<MovieIcon />}
         />
         <BottomNavigationAction
-          onClick={() => dispatch(movieAction(tv))}
+          onClick={() => dispatch(movieAction('tv'))}
           label="TV Series"
           icon={<TheatersIcon />}
         />
         <BottomNavigationAction
-          onClick={() => dispatch(movieAction('popular'))}
+          onClick={() => dispatch(movieAction('/'))}
           label="Search"
           icon={<SearchIcon />}
         />
