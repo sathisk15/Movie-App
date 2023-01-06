@@ -4,8 +4,10 @@ const SearchInput = () => {
   return (
     <>
       <div className="search">
-        <SearchIcon />
         <input type="text" placeholder="Search..." />
+        <div className="search-icon">
+          <SearchIcon />
+        </div>
       </div>
     </>
   );

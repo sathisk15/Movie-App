@@ -40,7 +40,7 @@ const BottomNav = () => {
           icon={<TheatersIcon />}
         />
         <BottomNavigationAction
-          onClick={() => dispatch(movieAction('/'))}
+          onClick={() => dispatch(movieAction('search'))}
           label="Search"
           icon={<SearchIcon />}
         />

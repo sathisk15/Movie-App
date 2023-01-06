@@ -24,7 +24,7 @@ const NavBar = () => {
           <Typography variant="h6" noWrap component="div">
             Movie App
           </Typography>
-          <SearchInput />
+          {/* <SearchInput /> */}
         </Toolbar>
       </AppBar>
     </Box>
