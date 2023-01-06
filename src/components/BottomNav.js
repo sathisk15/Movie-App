@@ -7,10 +7,16 @@ import WhatshotIcon from '@mui/icons-material/Whatshot';
 import MovieIcon from '@mui/icons-material/Movie';
 import TheatersIcon from '@mui/icons-material/Theaters';
 import SearchIcon from '@mui/icons-material/Search';
+import { useDispatch } from 'react-redux';
+import { movieAction } from '../redux/redux';
 
 const BottomNav = () => {
   const [value, setValue] = React.useState(0);
-
+  const dispatch = useDispatch();
+  const key = '20c575bf9f44538421f08161da824a42';
+  let popular = `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`;
+  let trending = `https://api.themoviedb.org/3/trending/all/day?api_key=${key}&language=en-US&page=1`;
+  let tv = `https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1`;
   return (
     <Box className="bottom-nav">
       <BottomNavigation
@@ -21,10 +27,26 @@ const BottomNav = () => {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction label="Trending" icon={<WhatshotIcon />} />
-        <BottomNavigationAction label="Movies" icon={<MovieIcon />} />
-        <BottomNavigationAction label="TV Series" icon={<TheatersIcon />} />
-        <BottomNavigationAction label="Search" icon={<SearchIcon />} />
+        <BottomNavigationAction
+          onClick={() => dispatch(movieAction(trending))}
+          label="Trending"
+          icon={<WhatshotIcon />}
+        />
+        <BottomNavigationAction
+          onClick={() => dispatch(movieAction(popular))}
+          label="Movies"
+          icon={<MovieIcon />}
+        />
+        <BottomNavigationAction
+          onClick={() => dispatch(movieAction(tv))}
+          label="TV Series"
+          icon={<TheatersIcon />}
+        />
+        <BottomNavigationAction
+          onClick={() => dispatch(movieAction('popular'))}
+          label="Search"
+          icon={<SearchIcon />}
+        />
       </BottomNavigation>
     </Box>
   );

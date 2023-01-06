@@ -8,14 +8,16 @@ const MovieContent = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(movieAction('trending'));
+    dispatch(
+      movieAction(
+        'https://api.themoviedb.org/3/trending/all/day?api_key=20c575bf9f44538421f08161da824a42&language=en-US&page=1'
+      )
+    );
   }, [dispatch]);
 
   return (
     <div className="movie-content">
-      {movie.map((data) => (
-        <MovieBox key={data.id} data={data} />
-      ))}
+      {movie && movie.map((data) => <MovieBox key={data.id} data={data} />)}
     </div>
   );
 };
