@@ -2,7 +2,8 @@ import React from 'react';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
-const MovieBox = ({ data }) => {
+
+const MovieBox = ({ data, showDetails }) => {
   const IMG_URL = 'https://image.tmdb.org/t/p/w1280';
   // To calculate rating
   let rating = 5 * ((data.vote_average * 10) / 100);
@@ -28,7 +29,10 @@ const MovieBox = ({ data }) => {
     }
   };
   return (
-    <div className="movie-box">
+    <div
+      className="movie-box"
+      onClick={() => showDetails({ ...data, rating, formatData })}
+    >
       <img
         src={IMG_URL + data.poster_path}
         alt={data.original_title || data.name}

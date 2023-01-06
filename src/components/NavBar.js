@@ -10,7 +10,7 @@ const NavBar = () => {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
-        <Toolbar sx={{ display: 'flex' }}>
+        <Toolbar sx={{ display: 'flex', marginLeft: '40px' }}>
           <IconButton
             size="large"
             edge="start"
