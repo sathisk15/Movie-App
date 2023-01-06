@@ -14,10 +14,15 @@ const movieAction =
     let popular = `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=${page}`;
     let trending = `https://api.themoviedb.org/3/trending/all/day?api_key=${key}&language=en-US&page=${page}`;
     let tv = `https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=${page}`;
+
     if (item === 'popular') URL = popular;
     else if (item === 'trending') URL = trending;
     else if (item === 'tv') URL = tv;
-    else URL = '/';
+    else if (item === 'search') URL = '/';
+    else {
+      URL = item + page;
+      item = 'search';
+    }
     try {
       let { data } = await axios.get(URL);
       dispatch({

@@ -19,18 +19,22 @@ const Pages = () => {
   };
 
   return (
-    <div className="page-numbers">
-      <PaginationItem type="previous" onClick={previous} />
-      <Pagination
-        count={99}
-        page={movie.page}
-        color="primary"
-        hideNextButton={true}
-        hidePrevButton={true}
-        onClick={page}
-      />
-      <PaginationItem type="next" onClick={next} />
-    </div>
+    <>
+      {movie.total_pages >= movie.page && (
+        <div className="page-numbers">
+          <PaginationItem type="previous" onClick={previous} />
+          <Pagination
+            count={movie.total_pages}
+            page={movie.page}
+            color="primary"
+            hideNextButton={true}
+            hidePrevButton={true}
+            onClick={page}
+          />
+          <PaginationItem type="next" onClick={next} />
+        </div>
+      )}
+    </>
   );
 };
 export default Pages;

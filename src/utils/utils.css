@@ -3,9 +3,8 @@
   align-items: center;
   justify-content: space-between;
   background-color: #fff;
-  /* border: 2px solid #3b8ad9; */
+  margin: 15px 0;
   color: #3b8ad9;
-
   cursor: pointer;
   width: 50%;
   height: 40px;
@@ -34,7 +33,8 @@
 }
 
 .search-icon {
-  background-color: rgb(202, 202, 202);
+  background-color: #3b8ad9;
+  color: #fff;
   width: 15%;
   display: flex;
   justify-content: center;

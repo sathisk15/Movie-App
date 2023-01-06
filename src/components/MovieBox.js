@@ -29,7 +29,10 @@ const MovieBox = ({ data }) => {
   };
   return (
     <div className="movie-box">
-      <img src={IMG_URL + data.poster_path} alt="Spyderman" />
+      <img
+        src={IMG_URL + data.poster_path}
+        alt={data.original_title || data.name}
+      />
       <div className="movie-details">
         <div className="name">{data.original_title || data.name}</div>
         {data.media_type ? (
