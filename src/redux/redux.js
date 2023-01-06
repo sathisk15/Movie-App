@@ -14,15 +14,16 @@ const movieAction =
     let popular = `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=${page}`;
     let trending = `https://api.themoviedb.org/3/trending/all/day?api_key=${key}&language=en-US&page=${page}`;
     let tv = `https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=${page}`;
-    if (item === 'trending') URL = trending;
-    else if (item === 'popular') URL = popular;
+    if (item === 'popular') URL = popular;
+    else if (item === 'trending') URL = trending;
     else if (item === 'tv') URL = tv;
     else URL = '/';
-
     try {
       let { data } = await axios.get(URL);
-      data = { ...data, screenContent: item };
-      dispatch({ type: MOVIE_REQUEST_SUCCESS, payload: data });
+      dispatch({
+        type: MOVIE_REQUEST_SUCCESS,
+        payload: { ...data, screenContent: item },
+      });
     } catch (error) {
       dispatch({ type: MOVIE_REQUEST_FAILED, payload: error });
       console.log(error);
@@ -32,7 +33,7 @@ const movieAction =
 const movieReducer = (state = { movie: { page: 0 } }, action) => {
   switch (action.type) {
     case MOVIE_REQUEST_REQUEST:
-      return { loading: true, movie: { page: 0 } };
+      return { loading: false, movie: { page: 0 } };
     case MOVIE_REQUEST_SUCCESS:
       return { loading: true, movie: action.payload };
     case MOVIE_REQUEST_FAILED:
