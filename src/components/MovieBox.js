@@ -1,7 +1,11 @@
 import React from 'react';
 import StarRateIcon from '@mui/icons-material/StarRate';
+import StarOutlineIcon from '@mui/icons-material/StarOutline';
+import StarHalfIcon from '@mui/icons-material/StarHalf';
 const MovieBox = ({ data }) => {
-  console.log(data.vote_average);
+  // To calculate rating
+  let rating = 5 * ((data.vote_average * 10) / 100);
+
   return (
     <div className="movie-box">
       <img
@@ -19,11 +23,15 @@ const MovieBox = ({ data }) => {
           <div className="date">{data.release_date || data.first_air_date}</div>
         </div>
         <div className="rating">
-          <StarRateIcon />
-          <StarRateIcon />
-          <StarRateIcon />
-          <StarRateIcon />
-          <StarRateIcon />
+          {[1, 2, 3, 4, 5].map((n) =>
+            rating > n ? (
+              <StarRateIcon key={n} />
+            ) : rating >= n - 0.5 ? (
+              <StarHalfIcon key={n} />
+            ) : (
+              <StarOutlineIcon key={n} />
+            )
+          )}
         </div>
       </div>
     </div>
