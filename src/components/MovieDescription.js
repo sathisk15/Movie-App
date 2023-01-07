@@ -4,7 +4,6 @@ import StarRateIcon from '@mui/icons-material/StarRate';
 import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import StarHalfIcon from '@mui/icons-material/StarHalf';
 const MovieDescription = ({ data, func }) => {
-  console.log(data);
   const IMG_URL = 'https://image.tmdb.org/t/p/w1280';
 
   return (
