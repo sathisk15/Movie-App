@@ -20,7 +20,12 @@ const NavBar = () => {
           >
             <LiveTvIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            style={{ cursor: 'pointer' }}
+          >
             Movie App
           </Typography>
         </Toolbar>
